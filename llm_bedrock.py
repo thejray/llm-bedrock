@@ -71,8 +71,11 @@ class BedrockModel(llm.Model):
         )
         bedrock = session.client("bedrock-runtime", region_name=AWS_REGION)
         messages = []
+        system = prompt.system
         if conversation:
             for turn in conversation.responses:
+                if not system and turn.prompt.system:
+                    system = turn.prompt.system
                 messages.append(self._user_message(turn.prompt))
                 messages.append(
                     {
@@ -84,6 +87,8 @@ class BedrockModel(llm.Model):
                 )
         messages.append(self._user_message(prompt))
         params = {"messages": messages, "modelId": self.model_id}
+        if system:
+            params["system"] = [{"text": system}]
         chunks = []
         usage = {}
         if stream:
