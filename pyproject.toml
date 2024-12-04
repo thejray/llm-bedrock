@@ -1,6 +1,6 @@
 [project]
 name = "llm-bedrock"
-version = "0.1"
+version = "0.1a0"
 description = "Run prompts against models hosted on AWS Bedrock"
 readme = "README.md"
 authors = [{name = "Simon Willison"}]
