@@ -82,8 +82,10 @@ class BedrockModel(llm.Model):
                 name = ""
                 if attachment.path:
                     name = pathlib.Path(attachment.path).stem
+                    # Remove any non-alphanumeric characters
+                    name = "".join(c for c in name if c.isalnum())
                 if not name:
-                    name = "attachment.pdf"
+                    name = "attachment"
                 content.append(
                     {
                         "document": {
