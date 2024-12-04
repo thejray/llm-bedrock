@@ -1,0 +1,31 @@
+[project]
+name = "llm-bedrock"
+version = "0.1"
+description = "Run prompts against models hosted on AWS Bedrock"
+readme = "README.md"
+authors = [{name = "Simon Willison"}]
+license = {text = "Apache-2.0"}
+classifiers = [
+    "License :: OSI Approved :: Apache Software License"
+]
+requires-python = ">=3.9"
+dependencies = [
+    "llm>=0.19",
+    "boto3"
+]
+
+[build-system]
+requires = ["setuptools"]
+build-backend = "setuptools.build_meta"
+
+[project.urls]
+Homepage = "https://github.com/simonw/llm-bedrock"
+Changelog = "https://github.com/simonw/llm-bedrock/releases"
+Issues = "https://github.com/simonw/llm-bedrock/issues"
+CI = "https://github.com/simonw/llm-bedrock/actions"
+
+[project.entry-points.llm]
+bedrock = "llm_bedrock"
+
+[project.optional-dependencies]
+test = ["pytest"]
