@@ -34,7 +34,7 @@ FORMAT_TYPES = {
 
 
 class BedrockModel(llm.Model):
-    needs_key = "bedrock-runtime"
+    needs_key = "bedrock"
     can_stream = True
 
     def __init__(self, model_id, supports_attachments):
