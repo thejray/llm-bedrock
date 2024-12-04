@@ -1,5 +1,6 @@
 import boto3
 import llm
+import pathlib
 
 MODELS = (
     "us.amazon.nova-micro-v1:0",
@@ -18,9 +19,47 @@ def register_models(register):
 class BedrockModel(llm.Model):
     needs_key = "bedrock-runtime"
     can_stream = True
+    attachment_types = {
+        "image/png",
+        "image/jpeg",
+        "image/webp",
+        "image/gif",
+        "application/pdf",
+    }
 
     def __init__(self, model_id):
         self.model_id = model_id
+
+    def _user_message(self, prompt):
+        content = []
+        for attachment in prompt.attachments:
+            if attachment.type.startswith("image/"):
+                content.append(
+                    {
+                        "image": {
+                            "format": attachment.type.split("/")[1],
+                            "source": {"bytes": attachment.content_bytes()},
+                        }
+                    }
+                )
+            elif attachment.type == "application/pdf":
+                # Name is required
+                name = ""
+                if attachment.path:
+                    name = pathlib.Path(attachment.path).stem
+                if not name:
+                    name = "attachment.pdf"
+                content.append(
+                    {
+                        "document": {
+                            "name": name,
+                            "format": "pdf",
+                            "source": {"bytes": attachment.content_bytes()},
+                        }
+                    }
+                )
+        content.append({"text": prompt.prompt})
+        return {"role": "user", "content": content}
 
     def execute(self, prompt, stream, response, conversation):
         key = self.get_key()
@@ -34,14 +73,7 @@ class BedrockModel(llm.Model):
         messages = []
         if conversation:
             for turn in conversation.responses:
-                messages.append(
-                    {
-                        "role": "user",
-                        "content": [
-                            {"text": turn.prompt.prompt},
-                        ],
-                    }
-                )
+                messages.append(self._user_message(turn.prompt))
                 messages.append(
                     {
                         "role": "assistant",
@@ -50,14 +82,7 @@ class BedrockModel(llm.Model):
                         ],
                     }
                 )
-        messages.append(
-            {
-                "role": "user",
-                "content": [
-                    {"text": prompt.prompt},
-                ],
-            }
-        )
+        messages.append(self._user_message(prompt))
         params = {"messages": messages, "modelId": self.model_id}
         chunks = []
         usage = {}
