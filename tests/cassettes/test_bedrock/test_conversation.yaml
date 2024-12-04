@@ -1,0 +1,120 @@
+interactions:
+- request:
+    body: '{"messages": [{"role": "user", "content": [{"text": "What is the capital
+      of France?"}]}], "system": [{"text": "One word answer"}]}'
+    headers:
+      Content-Length:
+      - '130'
+      Content-Type:
+      - !!binary |
+        YXBwbGljYXRpb24vanNvbg==
+      User-Agent:
+      - !!binary |
+        Qm90bzMvMS4zNS43NCBtZC9Cb3RvY29yZSMxLjM1Ljc0IHVhLzIuMCBvcy9tYWNvcyMyNC4wLjAg
+        bWQvYXJjaCNhcm02NCBsYW5nL3B5dGhvbiMzLjEyLjAgbWQvcHlpbXBsI0NQeXRob24gY2ZnL3Jl
+        dHJ5LW1vZGUjbGVnYWN5IEJvdG9jb3JlLzEuMzUuNzQ=
+      X-Amz-Date:
+      - !!binary |
+        MjAyNDEyMDRUMDIwMjUxWg==
+      amz-sdk-invocation-id:
+      - !!binary |
+        YTIzNGQ0NDktYzgyZS00M2MxLTg3MzctODg5NGIxNzFkYzBk
+      amz-sdk-request:
+      - !!binary |
+        YXR0ZW1wdD0x
+    method: POST
+    uri: https://bedrock-runtime.us-west-2.amazonaws.com/model/us.amazon.nova-lite-v1%3A0/converse-stream
+  response:
+    body:
+      string: !!binary |
+        AAAAsgAAAFKKQLTFCzpldmVudC10eXBlBwAMbWVzc2FnZVN0YXJ0DTpjb250ZW50LXR5cGUHABBh
+        cHBsaWNhdGlvbi9qc29uDTptZXNzYWdlLXR5cGUHAAVldmVudHsicCI6ImFiY2RlZmdoaWprbG1u
+        b3BxcnN0dXZ3eHl6QUJDREVGR0hJSktMTU5PUFFSU1RVVldYWVowIiwicm9sZSI6ImFzc2lzdGFu
+        dCJ9QP+CaAAAAMAAAABXeTjz5Qs6ZXZlbnQtdHlwZQcAEWNvbnRlbnRCbG9ja0RlbHRhDTpjb250
+        ZW50LXR5cGUHABBhcHBsaWNhdGlvbi9qc29uDTptZXNzYWdlLXR5cGUHAAVldmVudHsiY29udGVu
+        dEJsb2NrSW5kZXgiOjAsImRlbHRhIjp7InRleHQiOiJQYXJpcyJ9LCJwIjoiYWJjZGVmZ2hpamts
+        bW5vcHFyc3R1dnd4eXpBQkNERUZHSCJ91IeN+wAAALsAAABWgD0SrQs6ZXZlbnQtdHlwZQcAEGNv
+        bnRlbnRCbG9ja1N0b3ANOmNvbnRlbnQtdHlwZQcAEGFwcGxpY2F0aW9uL2pzb24NOm1lc3NhZ2Ut
+        dHlwZQcABWV2ZW50eyJjb250ZW50QmxvY2tJbmRleCI6MCwicCI6ImFiY2RlZmdoaWprbG1ub3Bx
+        cnN0dXZ3eHl6QUJDREVGR0hJSktMTU5PUFFSU1RVVldYWVowMTIifXbOeXUAAACiAAAAUXOpcv0L
+        OmV2ZW50LXR5cGUHAAttZXNzYWdlU3RvcA06Y29udGVudC10eXBlBwAQYXBwbGljYXRpb24vanNv
+        bg06bWVzc2FnZS10eXBlBwAFZXZlbnR7InAiOiJhYmNkZWZnaGlqa2xtbm9wcXJzdHV2d3h5ekFC
+        Q0RFRkciLCJzdG9wUmVhc29uIjoiZW5kX3R1cm4ifbmQA7wAAADUAAAATogzamcLOmV2ZW50LXR5
+        cGUHAAhtZXRhZGF0YQ06Y29udGVudC10eXBlBwAQYXBwbGljYXRpb24vanNvbg06bWVzc2FnZS10
+        eXBlBwAFZXZlbnR7Im1ldHJpY3MiOnsibGF0ZW5jeU1zIjo0MjF9LCJwIjoiYWJjZGVmZ2hpamts
+        bW5vcHFyc3R1IiwidXNhZ2UiOnsiaW5wdXRUb2tlbnMiOjEwLCJvdXRwdXRUb2tlbnMiOjEsInRv
+        dGFsVG9rZW5zIjoxMX19EVM3lA==
+    headers:
+      Connection:
+      - keep-alive
+      Content-Type:
+      - application/vnd.amazon.eventstream
+      Date:
+      - Wed, 04 Dec 2024 02:02:51 GMT
+      Transfer-Encoding:
+      - chunked
+      x-amzn-RequestId:
+      - 8503fcf9-0432-4770-bcc2-051285b71062
+    status:
+      code: 200
+      message: OK
+- request:
+    body: '{"messages": [{"role": "user", "content": [{"text": "What is the capital
+      of France?"}]}, {"role": "assistant", "content": [{"text": "Paris"}]}, {"role":
+      "user", "content": [{"text": "Germany?"}]}], "system": [{"text": "One word answer"}]}'
+    headers:
+      Content-Length:
+      - '238'
+      Content-Type:
+      - !!binary |
+        YXBwbGljYXRpb24vanNvbg==
+      User-Agent:
+      - !!binary |
+        Qm90bzMvMS4zNS43NCBtZC9Cb3RvY29yZSMxLjM1Ljc0IHVhLzIuMCBvcy9tYWNvcyMyNC4wLjAg
+        bWQvYXJjaCNhcm02NCBsYW5nL3B5dGhvbiMzLjEyLjAgbWQvcHlpbXBsI0NQeXRob24gY2ZnL3Jl
+        dHJ5LW1vZGUjbGVnYWN5IEJvdG9jb3JlLzEuMzUuNzQ=
+      X-Amz-Date:
+      - !!binary |
+        MjAyNDEyMDRUMDIwMjUxWg==
+      amz-sdk-invocation-id:
+      - !!binary |
+        MDFjZTk5NTQtODkwMy00Zjk1LTk5NzUtNTE1ZDJlMGQ5NjMz
+      amz-sdk-request:
+      - !!binary |
+        YXR0ZW1wdD0x
+    method: POST
+    uri: https://bedrock-runtime.us-west-2.amazonaws.com/model/us.amazon.nova-lite-v1%3A0/converse-stream
+  response:
+    body:
+      string: !!binary |
+        AAAAsQAAAFLN4M4VCzpldmVudC10eXBlBwAMbWVzc2FnZVN0YXJ0DTpjb250ZW50LXR5cGUHABBh
+        cHBsaWNhdGlvbi9qc29uDTptZXNzYWdlLXR5cGUHAAVldmVudHsicCI6ImFiY2RlZmdoaWprbG1u
+        b3BxcnN0dXZ3eHl6QUJDREVGR0hJSktMTU5PUFFSU1RVVldYWVoiLCJyb2xlIjoiYXNzaXN0YW50
+        In3DJvYkAAAA1wAAAFer+Lh3CzpldmVudC10eXBlBwARY29udGVudEJsb2NrRGVsdGENOmNvbnRl
+        bnQtdHlwZQcAEGFwcGxpY2F0aW9uL2pzb24NOm1lc3NhZ2UtdHlwZQcABWV2ZW50eyJjb250ZW50
+        QmxvY2tJbmRleCI6MCwiZGVsdGEiOnsidGV4dCI6IkJlcmxpbiJ9LCJwIjoiYWJjZGVmZ2hpamts
+        bW5vcHFyc3R1dnd4eXpBQkNERUZHSElKS0xNTk9QUVJTVFVWV1hZWjAxMjMifTgZqGsAAACKAAAA
+        Vhx8g5sLOmV2ZW50LXR5cGUHABBjb250ZW50QmxvY2tTdG9wDTpjb250ZW50LXR5cGUHABBhcHBs
+        aWNhdGlvbi9qc29uDTptZXNzYWdlLXR5cGUHAAVldmVudHsiY29udGVudEJsb2NrSW5kZXgiOjAs
+        InAiOiJhYmNkZWYifXbreQwAAACNAAAAUTA4yigLOmV2ZW50LXR5cGUHAAttZXNzYWdlU3RvcA06
+        Y29udGVudC10eXBlBwAQYXBwbGljYXRpb24vanNvbg06bWVzc2FnZS10eXBlBwAFZXZlbnR7InAi
+        OiJhYmNkZWZnaGlqa2wiLCJzdG9wUmVhc29uIjoiZW5kX3R1cm4ifS7bVN0AAADdAAAAToUjCBYL
+        OmV2ZW50LXR5cGUHAAhtZXRhZGF0YQ06Y29udGVudC10eXBlBwAQYXBwbGljYXRpb24vanNvbg06
+        bWVzc2FnZS10eXBlBwAFZXZlbnR7Im1ldHJpY3MiOnsibGF0ZW5jeU1zIjo0MzJ9LCJwIjoiYWJj
+        ZGVmZ2hpamtsbW5vcHFyc3R1dnd4eXpBQkNEIiwidXNhZ2UiOnsiaW5wdXRUb2tlbnMiOjE4LCJv
+        dXRwdXRUb2tlbnMiOjEsInRvdGFsVG9rZW5zIjoxOX19U2dbhQ==
+    headers:
+      Connection:
+      - keep-alive
+      Content-Type:
+      - application/vnd.amazon.eventstream
+      Date:
+      - Wed, 04 Dec 2024 02:02:52 GMT
+      Transfer-Encoding:
+      - chunked
+      x-amzn-RequestId:
+      - 05ccfef7-b68f-4661-ac1a-2e9a46d9f642
+    status:
+      code: 200
+      message: OK
+version: 1
