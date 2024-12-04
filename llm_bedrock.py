@@ -99,13 +99,20 @@ class BedrockModel(llm.Model):
         return {"role": "user", "content": content}
 
     def execute(self, prompt, stream, response, conversation):
-        key = self.get_key()
+        try:
+            key = self.get_key()
+            access_key, _, secret_key = key.partition(":")
+            session = boto3.Session(
+                aws_access_key_id=access_key,
+                aws_secret_access_key=secret_key,
+            )
+        except llm.errors.NeedsKeyException:
+            # Try fallback on boto3.Session() default
+            session = boto3.Session()
+            if not session.get_credentials():
+                raise llm.errors.NeedsKeyException("No AWS credentials found")
+
         # It's actually access key: secret key
-        access_key, _, secret_key = key.partition(":")
-        session = boto3.Session(
-            aws_access_key_id=access_key,
-            aws_secret_access_key=secret_key,
-        )
         bedrock = session.client("bedrock-runtime", region_name=AWS_REGION)
         messages = []
         system = prompt.system

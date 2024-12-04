@@ -13,7 +13,16 @@ Install this plugin in the same environment as [LLM](https://llm.datasette.io/).
 ```bash
 llm install llm-bedrock
 ```
-You'll need an access key and a secret key to use this plugin, with permission granted to access the Bedrock models. These [step by step instructions](https://ndurner.github.io/amazon-nova) can help you obtain those credentials.
+
+### Credentials
+
+You'll need an access key and a secret key to use this plugin, with permission granted to access the Bedrock Nova models.
+
+If you have already configured the AWS CLI on your machine you may be able to skip this step, as the plugin will automatically use the credentials from the CLI.
+
+You still need to request access to the Bedrock models [in the AWS console](https://us-west-2.console.aws.amazon.com/bedrock/home?region=us-west-2#/), which should be provisioned automatically within seconds of you filing the request.
+
+If you want to use the plugin with dedicated IAM credentials (an access key and a secret key) follow these [step by step instructions](https://ndurner.github.io/amazon-nova) by Nils Durner.
 
 Combine those into a `access_key:secret_key` format (joined by a colon) and paste that into:
 
