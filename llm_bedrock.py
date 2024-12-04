@@ -17,6 +17,22 @@ def register_models(register):
         register(BedrockModel(model_id, supports_attachments), aliases=[alias])
 
 
+FORMAT_TYPES = {
+    "image/png": "png",
+    "image/jpeg": "jpeg",
+    "image/webp": "webp",
+    "image/gif": "gif",
+    "application/pdf": "pdf",
+    "video/quicktime": "mov",
+    "video/x-matroska": "mkv",
+    "video/mp4": "mp4",
+    "video/webm": "webm",
+    "video/x-flv": "flv",
+    "video/mpeg": "mpeg",
+    "video/x-ms-wmv": "wmv",
+}
+
+
 class BedrockModel(llm.Model):
     needs_key = "bedrock-runtime"
     can_stream = True
@@ -30,6 +46,14 @@ class BedrockModel(llm.Model):
                 "image/webp",
                 "image/gif",
                 "application/pdf",
+                "video/quicktime",
+                "video/x-matroska",
+                "video/mp4",
+                "video/webm",
+                "video/x-flv",
+                "video/mpeg",
+                "video/mpeg",
+                "video/x-ms-wmv",
             }
 
     def _user_message(self, prompt):
@@ -39,7 +63,16 @@ class BedrockModel(llm.Model):
                 content.append(
                     {
                         "image": {
-                            "format": attachment.type.split("/")[1],
+                            "format": FORMAT_TYPES[attachment.type],
+                            "source": {"bytes": attachment.content_bytes()},
+                        }
+                    }
+                )
+            elif attachment.type.startswith("video/"):
+                content.append(
+                    {
+                        "video": {
+                            "format": FORMAT_TYPES[attachment.type],
                             "source": {"bytes": attachment.content_bytes()},
                         }
                     }

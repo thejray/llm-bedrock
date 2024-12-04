@@ -35,7 +35,7 @@ Run a prompt like this:
 ```bash
 llm -m nova-pro 'a happy poem about a pelican with a secret'
 ```
-Images and PDFs can be provided using the `-a` option, which takes a file path or a URL:
+Images and videos and PDFs can be provided using the `-a` option, which takes a file path or a URL:
 
 ```bash
 llm -m nova-lite 'describe this image' -a https://static.simonwillison.net/static/2024/pelicans.jpg
