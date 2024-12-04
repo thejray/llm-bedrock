@@ -28,4 +28,4 @@ CI = "https://github.com/simonw/llm-bedrock/actions"
 bedrock = "llm_bedrock"
 
 [project.optional-dependencies]
-test = ["pytest"]
+test = ["pytest", "pytest-recording"]

@@ -45,3 +45,8 @@ To run the tests:
 ```bash
 python -m pytest
 ```
+To regenerate the captured HTTP responses:
+```bash
+PYTEST_BEDROCK_API_KEY="$(llm keys get bedrock)" python -m pytest --record-mode all
+```
+
