@@ -3,32 +3,34 @@ import llm
 import pathlib
 
 MODELS = (
-    "us.amazon.nova-micro-v1:0",
-    "us.amazon.nova-lite-v1:0",
-    "us.amazon.nova-pro-v1:0",
+    # model_id, alias, supports_attachments
+    ("us.amazon.nova-micro-v1:0", "nova-micro", False),
+    ("us.amazon.nova-lite-v1:0", "nova-lite", True),
+    ("us.amazon.nova-pro-v1:0", "nova-pro", True),
 )
 AWS_REGION = "us-west-2"
 
 
 @llm.hookimpl
 def register_models(register):
-    for model_id in MODELS:
-        register(BedrockModel(model_id))
+    for model_id, alias, supports_attachments in MODELS:
+        register(BedrockModel(model_id, supports_attachments), aliases=[alias])
 
 
 class BedrockModel(llm.Model):
     needs_key = "bedrock-runtime"
     can_stream = True
-    attachment_types = {
-        "image/png",
-        "image/jpeg",
-        "image/webp",
-        "image/gif",
-        "application/pdf",
-    }
 
-    def __init__(self, model_id):
+    def __init__(self, model_id, supports_attachments):
         self.model_id = model_id
+        if supports_attachments:
+            self.attachment_types = {
+                "image/png",
+                "image/jpeg",
+                "image/webp",
+                "image/gif",
+                "application/pdf",
+            }
 
     def _user_message(self, prompt):
         content = []
