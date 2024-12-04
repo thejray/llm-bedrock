@@ -31,14 +31,33 @@ class BedrockModel(llm.Model):
             aws_secret_access_key=secret_key,
         )
         bedrock = session.client("bedrock-runtime", region_name=AWS_REGION)
-        messages = [
+        messages = []
+        if conversation:
+            for turn in conversation.responses:
+                messages.append(
+                    {
+                        "role": "user",
+                        "content": [
+                            {"text": turn.prompt.prompt},
+                        ],
+                    }
+                )
+                messages.append(
+                    {
+                        "role": "assistant",
+                        "content": [
+                            {"text": turn.text_or_raise()},
+                        ],
+                    }
+                )
+        messages.append(
             {
                 "role": "user",
                 "content": [
                     {"text": prompt.prompt},
                 ],
             }
-        ]
+        )
         params = {"messages": messages, "modelId": self.model_id}
         chunks = []
         usage = {}
