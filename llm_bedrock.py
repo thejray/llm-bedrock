@@ -1,5 +1,6 @@
 import boto3
 import llm
+import os
 import pathlib
 
 MODELS = (
@@ -8,7 +9,7 @@ MODELS = (
     ("us.amazon.nova-lite-v1:0", "nova-lite", True),
     ("us.amazon.nova-pro-v1:0", "nova-pro", True),
 )
-AWS_REGION = "us-west-2"
+AWS_REGION = os.environ["AWS_REGION"] if "AWS_REGION" in os.environ else "us-west-2"
 
 
 @llm.hookimpl
