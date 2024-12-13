@@ -50,6 +50,12 @@ Images and videos and PDFs can be provided using the `-a` option, which takes a 
 llm -m nova-lite 'describe this image' -a https://static.simonwillison.net/static/2024/pelicans.jpg
 ```
 
+If you want to use Bedrock in a region other than the default one (us-west-2), set your AWS_REGION environment variable, e.g.
+
+```bash
+export AWS_REGION=eu-west-1
+```
+
 ## Development
 
 To set up this plugin locally, first checkout the code. Then create a new virtual environment:
