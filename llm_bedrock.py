@@ -9,6 +9,8 @@ MODELS = (
     ("us.amazon.nova-lite-v1:0", "nova-lite", True),
     ("us.amazon.nova-pro-v1:0", "nova-pro", True),
     ("us.amazon.nova-premier-v1:0", "nova-premier", True),
+    ("us.anthropic.claude-opus-4-1-20250805-v1:0", "claude-opus-4-1", True),
+    ("us.anthropic.claude-sonnet-4-20250514-v1:0", "claude-sonnet-4", True),    
 )
 AWS_REGION = os.environ["AWS_REGION"] if "AWS_REGION" in os.environ else "us-west-2"
 
